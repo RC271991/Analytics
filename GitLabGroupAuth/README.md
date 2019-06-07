@@ -7,7 +7,7 @@ The steps of the project verifies that the client is authorized by gitlab's oaut
 client is in your group. If the user is in the group, then the user gets directed to your dashboard. If not, then the user gets
 directed to a blank page insisting them to contact the app manager for group request.
 
-To replicate this use case on your project you need to begin with understanding the following documentations from gitlab.
+To replicate this use case on your project you need to begin with understanding the following documentations from gitLab.
 
 #### Oauth2:
 https://docs.gitlab.com/ee/api/oauth2.html
