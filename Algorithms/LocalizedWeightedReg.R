@@ -10,7 +10,7 @@ localizedWeightedRegression = function(x,y){
   ans = list()
   
   for (i in 1:length(x)) {
-    w[[i]] = exp(-(X[i,2]-X[(1:length(x)),2])^2/( 2 * tau))
+    w[[i]] = exp(-(X[i,2]-X[(1:length(x)),2])^2/( 2 * tau^2))
     
     #(xTwx)-1*xTwy
     theta = matrix.inverse(t(X) %*% (w[[i]] * X)) %*% t(X)%*% (w[[i]]*y)
