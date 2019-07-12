@@ -3,7 +3,7 @@ The following is a brief description of the Machine Learning parameters and form
 reference. It doesn't go in depth of how the formulas are developed; rather than, it displays the math of how I developed the parameters
 and algorithms that are in the individual code scripts.
 
-#### Localizied Weighted Regression
+### Localizied Weighted Regression
 
 Formulas for weights, coefficients, and predicted line: <br />
 
@@ -13,7 +13,7 @@ Formulas for weights, coefficients, and predicted line: <br />
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.codecogs.com/eqnedit.php?latex=\tilde{y}&space;=&space;\beta_{0}&space;&plus;&space;(\beta_1x^1&space;&plus;&space;\beta_2x^{2}&space;...\;&space;\beta_{n-1}x^{n-1})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\tilde{y}&space;=&space;\beta_{0}&space;&plus;&space;(\beta_1x^1&space;&plus;&space;\beta_2x^{2}&space;...\;&space;\beta_{n}x^{n})" title="\tilde{y} = \beta_{0} + (\beta_1x^1 + \beta_2x^{2} ...\; \beta_{n}x^{n})" /></a>
 
-#### Linear Regression by Gradient Descent
+### Linear Regression by Gradient Descent
 
 Formulas for coefficients and predicted line: <br />
 
@@ -22,7 +22,7 @@ Formulas for coefficients and predicted line: <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.codecogs.com/eqnedit.php?latex=\tilde{y}&space;=&space;\beta_{0}&space;&plus;&space;(\beta_1x^1&space;&plus;&space;\beta_2x^{2}&space;...\;&space;\beta_{n-1}x^{n-1})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\tilde{y}&space;=&space;\beta_{0}&space;&plus;&space;(\beta_1x^1&space;&plus;&space;\beta_2x^{2}&space;...\;&space;\beta_{n}x^{n})" title="\tilde{y} = \beta_{0} + (\beta_1x^1 + \beta_2x^{2} ...\; \beta_{n}x^{n})" /></a>
 
 
-#### Linear Regression by QR Decomposition:
+### Linear Regression by QR Decomposition:
 
 Formula: <br />
 
