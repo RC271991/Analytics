@@ -1,7 +1,7 @@
 # Algorithms
-
 The following is a brief description of the Machine Learning parameters and formulas for
-reference.
+reference. It doesn't go in depth of how the formulas are developed; rather than, it displays the math of how I developed the parameters
+and algorithms that are in the individual code scripts.
 
 ### Localizied Weighted Regression
 
