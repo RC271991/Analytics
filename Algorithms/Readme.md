@@ -26,4 +26,21 @@ Formulas for coefficients and predicted line: <br />
 
 Formula: <br />
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=Ax&space;=&space;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Ax&space;=&space;b" title="Ax = b" /></a> <br />
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=\textup{A}&space;=&space;\textup{QR}&space;=&space;Q\begin{bmatrix}&space;R_1\\0&space;\end{bmatrix}&space;=&space;[Q_1,Q_2]\begin{bmatrix}&space;R_1\\0&space;\end{bmatrix}&space;=&space;Q_1R_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\textup{A}&space;=&space;\textup{QR}&space;=&space;Q\begin{bmatrix}&space;R_1\\0&space;\end{bmatrix}&space;=&space;[Q_1,Q_2]\begin{bmatrix}&space;R_1\\0&space;\end{bmatrix}&space;=&space;Q_1R_1" title="\textup{A} = \textup{QR} = Q\begin{bmatrix} R_1\\0 \end{bmatrix} = [Q_1,Q_2]\begin{bmatrix} R_1\\0 \end{bmatrix} = Q_1R_1" /></a>
+
+### Gaussian Discriminant Analysis
+
+Parameters and Formulas: <br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=Model:&space;\arg&space;\max_y&space;p(y|x)&space;=&space;\arg&space;\max_y&space;p(x|y)p(y)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Model:&space;\arg&space;\max_y&space;p(y|x)&space;=&space;\arg&space;\max_y&space;p(x|y)p(y)" title="Model: \arg \max_y p(y|x) = \arg \max_y p(x|y)p(y)" /></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=p(y)&space;=&space;\phi^{y}(1-\phi)^{(1-y)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(y)&space;=&space;\phi^{y}(1-\phi)^{(1-y)}" title="p(y) = \phi^{y}(1-\phi)^{(1-y)}" /></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=p(x|y&space;=&space;0)&space;=&space;\frac{1}{(2pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}exp(-1/2&space;(x&space;-&space;u_0)^{T}&space;(\sum)^{-1}(x-u_0))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(x|y&space;=&space;0)&space;=&space;\frac{1}{(2pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}exp(-1/2&space;(x&space;-&space;u_0)^{T}&space;(\sum)^{-1}(x-u_0))" title="p(x|y = 0) = \frac{1}{(2pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}exp(-1/2 (x - u_0)^{T} (\sum)^{-1}(x-u_0))" /></a> <br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=p(x|y&space;=&space;1)&space;=&space;\frac{1}{(2pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}exp(-1/2&space;(x&space;-&space;u_1)^{T}&space;(\sum)^{-1}(x-u_1))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(x|y&space;=&space;1)&space;=&space;\frac{1}{(2pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}exp(-1/2&space;(x&space;-&space;u_1)^{T}&space;(\sum)^{-1}(x-u_1))" title="p(x|y = 1) = \frac{1}{(2pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}exp(-1/2 (x - u_1)^{T} (\sum)^{-1}(x-u_1))" /></a>
+
+
