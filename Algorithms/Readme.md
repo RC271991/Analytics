@@ -7,7 +7,7 @@ and algorithms that are in the individual code scripts.
 
 Formulas for weights, coefficients, and predicted line: <br />
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=w&space;=&space;e&space;^&space;{(\frac{{-(x^{(i)}&space;-&space;x)^2}}{2\tau^2&space;})}&space;\;&space;,where&space;\;&space;\tau&space;\;&space;is\;&space;the\;&space;bandwidth" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;=&space;e&space;^&space;{(\frac{{-(x^{(i)}&space;-&space;x)^2}}{2\tau^2&space;})}&space;\;&space;,where&space;\;&space;\boldsymbol{\tau}&space;\;&space;is\;&space;the\;&space;bandwidth" title="w = e ^ {(\frac{{-(x^{(i)} - x)^2}}{2\tau^2 })} \; ,where \; \boldsymbol{\tau} \; is\; the\; bandwidth" /></a> <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=W&space;=&space;e&space;^&space;{(\frac{{-(x^{(i)}&space;-&space;x)^2}}{2\tau^2&space;})}&space;\;&space;,where&space;\;&space;\tau&space;\;&space;is\;&space;the\;&space;bandwidth" target="_blank"><img src="https://latex.codecogs.com/gif.latex?W&space;=&space;e&space;^&space;{(\frac{{-(x^{(i)}&space;-&space;x)^2}}{2\tau^2&space;})}&space;\;&space;,where&space;\;&space;\boldsymbol{\tau}&space;\;&space;is\;&space;the\;&space;bandwidth" title="W = e ^ {(\frac{{-(x^{(i)} - x)^2}}{2\tau^2 })} \; ,where \; \boldsymbol{\tau} \; is\; the\; bandwidth" /></a> <br />
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=\beta&space;=&space;(X^{T}WX)^{-1}X^{T}Wy" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\beta&space;=&space;(X^{T}WX)^{-1}X^{T}Wy" title="\beta = (X^{T}WX)^{-1}X^{T}Wy" /></a> <br />
 <br />
