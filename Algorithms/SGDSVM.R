@@ -1,4 +1,3 @@
-#For reference: https://svivek.com/teaching/machine-learning/fall2018/slides/svm/svm-sgd.pdf
 #SGD on linear seperable data
 
 #Date Clean-Up
@@ -29,7 +28,7 @@ SGDSVM = function(X,y) {
     X = X[,1:2]
     epochs = 1/i
     for (j in 1:NROW(X)){
-      if (y[j]* (t(w) %*% X[j,]+b) < 1){
+      if (y[j]* (t(w) %*% X[j,]+b) <= 1){
         w = w - alpha*((epochs*w) - (X[j,] * y[j]) )
         b = b + alpha*y[j]
         }
@@ -41,6 +40,7 @@ SGDSVM = function(X,y) {
   return(w)
 }
 
+w = SGDSVM(X,y)
 
 #Perpendicular line to vector w
 m = (w[2,] - 0)/(w[1,] - 0)
@@ -63,5 +63,5 @@ library(plotly)
 plot_ly() %>%
   add_trace(x = X[,1], y = X[,2], type = 'scatter', mode = 'markers') %>%
   add_trace(x = c(0,w[1,]), y = c(0,w[2,]), type = 'scatter', mode = 'markers + Line', name = 'w') %>%
-  add_trace(x = veclst, y = Y, type = 'scatter', mode = 'markers + Line', name = 'wTx+b')
+  add_trace(x = x, y = Y, type = 'scatter', mode = 'markers + Line', name = 'wTx+b')
 
