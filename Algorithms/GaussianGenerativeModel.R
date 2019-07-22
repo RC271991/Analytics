@@ -76,12 +76,13 @@ GaussianGenerativeAnalysis = function(X,y) {
   Pxy1Py = unlist(Pxy1Py)
   
   pred = list()
-  for (i in 1:length(Pxy1Py)){
-    if (Pxy1Py[i] - Pxy0Py[i] <= 0) {
-      pred[[i]] = 0
-    }
-    else{
+  maxVals = pmax(Pxy1Py, Pxy0Py) #argmax
+  for (i in 1:length(maxVals)){
+    if (Pxy1Py[i] == maxVals[i]) {
       pred[[i]] = 1
+    } 
+    else{
+      pred[[i]] = 0
     }
   }
   pred = unlist(pred)
