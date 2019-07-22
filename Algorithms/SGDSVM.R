@@ -61,6 +61,7 @@ for (i in 1:10){
 x = unlist(x)
 Y = m*x +b
 
+#Need to label x and y axis & data; however, this is a brief visualization of the algorithm in action
 plot_ly() %>%
   add_trace(x = X[,1], y = X[,2], type = 'scatter', mode = 'markers',name = 'Data') %>%
   add_trace(x = c(0,w[1,]), y = c(0,w[2,]), type = 'scatter', mode = 'markers + Line', name = 'w') %>%
