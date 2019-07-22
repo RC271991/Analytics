@@ -53,7 +53,7 @@ GaussianGenerativeAnalysis = function(X,y) {
     }
   }
   sigma = unlist(sigma)
-  sigma = matrix(value, nrow = NCOL(X_new), ncol = NCOL(X_new))
+  sigma = matrix(sigma, nrow = NCOL(X_new), ncol = NCOL(X_new))
   
   ############
   #Prediction#
