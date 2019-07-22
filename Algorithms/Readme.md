@@ -43,4 +43,8 @@ Parameters and Formulas: <br />
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=p(x|y&space;=&space;1)&space;=&space;\frac{1}{(2pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}exp(-1/2&space;(x&space;-&space;u_1)^{T}&space;(\sum)^{-1}(x-u_1))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(x|y&space;=&space;1)&space;=&space;\frac{1}{(2pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}exp(-1/2&space;(x&space;-&space;u_1)^{T}&space;(\sum)^{-1}(x-u_1))" title="p(x|y = 1) = \frac{1}{(2pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}exp(-1/2 (x - u_1)^{T} (\sum)^{-1}(x-u_1))" /></a>
 
+### Logistic Regression by Gradient Descent
 
+Beta and Gradient: <br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.codecogs.com/eqnedit.php?latex=\beta_{j}&space;=&space;\beta_{j}&space;-&space;\frac{\alpha}{m}&space;\sum_{i&space;=&space;1}^{m}[(h_{\theta}{(x_{i}})&space;-&space;y)x_{i}],\;&space;where\;&space;\boldsymbol{\alpha}\;&space;is\;&space;the\;&space;learning\;rate\;and\;h_{\theta}(x_{i})&space;=&space;\frac{1}{1&plus;exp^{-\beta^{T}x}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\beta_{j}&space;=&space;\beta_{j}&space;-&space;\frac{\alpha}{m}&space;\sum_{i&space;=&space;1}^{m}[(h_{\theta}{(x_{i}})&space;-&space;y)x_{i}],\;&space;where\;&space;\boldsymbol{\alpha}\;&space;is\;&space;the\;&space;learning\;rate\;and\;h_{\theta}(x_{i})&space;=&space;\frac{1}{1&plus;exp^{-\beta^{T}x}}" title="\beta_{j} = \beta_{j} - \frac{\alpha}{m} \sum_{i = 1}^{m}[(h_{\theta}{(x_{i}}) - y)x_{i}],\; where\; \boldsymbol{\alpha}\; is\; the\; learning\;rate\;and\;h_{\theta}(x_{i}) = \frac{1}{1+exp^{-\beta^{T}x}}" /></a>
