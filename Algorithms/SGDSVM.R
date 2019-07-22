@@ -29,7 +29,8 @@ SGDSVM = function(X,y) {
     epochs = 1/i
     for (j in 1:NROW(X)){
       if (y[j]* (t(w) %*% X[j,]+b) < 1){
-        w = w - alpha*((epochs*w) - (X[j,] * y[j]) )
+        #J(W) = 1/2wTWlambda + sum from i to m of the max of (0,1-yiwTxi) 
+        w = w - alpha*((epochs*w) - (X[j,] * y[j]) ) #w_old - (derative respect to line 32)
         b = b + alpha*y[j]
         }
       else{
