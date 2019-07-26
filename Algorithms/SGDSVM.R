@@ -1,4 +1,5 @@
 #SGD on linear seperable data
+#Hard-margin
 library(plotly)
 
 #Date Clean-Up
@@ -17,9 +18,9 @@ SGDSVM = function(X,y) {
   #Stochastic Gradient Descent
   w = matrix(rep(0,ncol(X)))
   b = 0
-  alpha = 0.004 #learning rate: Note can adjust learning rate respectively to change hyperplane
+  alpha = 0.08#learning rate: Note can adjust learning rate respectively to change hyperplane
   iter = 10000
-  
+
   for (i in 1:iter){
     #shuffling
     X = cbind(X,y)
@@ -27,7 +28,7 @@ SGDSVM = function(X,y) {
     
     y = X[,3]
     X = X[,1:2]
-    epochs = 1/i
+    epochs = 1/i #regularizer variable
     for (j in 1:NROW(X)){
       if (y[j]* (t(w) %*% X[j,]+b) < 1){
         #J(W) = sum from i to m of (1/2*||w||^2*epoch +  of the max of (0,1-yiwTxi))
@@ -39,31 +40,30 @@ SGDSVM = function(X,y) {
       }
     }
   }
-  return(w)
+  values = c(w,b)
+  return(values)
 }
 
-w = SGDSVM(X,y)
+values = SGDSVM(X,y)
 
-#Perpendicular line to vector w
-m = (w[2,] - 0)/(w[1,] - 0)
-m = -1/m
-
-#y = mx+b ==> b = y - mx
-b = w[2,] - (m * w[1,])
+intercept = -values[3]/values[2] 
+slope = -values[1]/values[2]
 
 #x values for line
-vec = w[1,]
+vec = values[1]
 x = list()
 for (i in 1:10){
   x[[i]] = vec
   vec = vec + 1
 }
 x = unlist(x)
-Y = m*x +b
+Y1 = slope*x+intercept
 
-#Need to label x and y axis & data; however, this is a brief visualization of the algorithm in action
+#Plotting data and wTx+b respect to SGD algorithm:
 plot_ly() %>%
-  add_trace(x = X[,1], y = X[,2], type = 'scatter', mode = 'markers',name = 'Data') %>%
-  add_trace(x = c(0,w[1,]), y = c(0,w[2,]), type = 'scatter', mode = 'markers + Line', name = 'w') %>%
-  add_trace(x = x, y = Y, type = 'scatter', mode = 'markers + Line', name = 'wTx+b')
-
+  add_trace(x = X[1:50,1], y = X[1:50,2], type = 'scatter', mode = 'markers',name = '-1') %>%
+  add_trace(x = X[51:100,1], y = X[51:100,2], type = 'scatter', mode = 'markers',name = '1') %>%
+  add_trace(x = x, y = Y1, type = 'scatter', mode = 'markers + Line', name = 'wTx+b') %>%
+  layout(title = 'Iris Data -- SGD-SVM',
+         xaxis = list(title = 'Sepal.Length'),
+         yaxis = list(title = 'Petal.Length'))
