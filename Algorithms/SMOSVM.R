@@ -25,7 +25,7 @@ SMOSVM = function(X,Y,K){
     changed_alphas <- 0
     for (i in 1:NROW(X)){
       y1 = Y[i]
-      E1 <- b + sum(alphas*Y*K[,i]) - y1
+      E1 = b + sum(alphas*Y*K[,i]) - y1
       if((y1*E1 < -eps & alphas[i] < C) || (y1 >  eps & alphas[i] > 0)) {
         #i!=j according to algorithm 
         j = sample(nrow(X),1)
