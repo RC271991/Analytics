@@ -11,10 +11,10 @@ df$Species[df$Species == 3] = 1
 #Assigning X matrix and labels
 X = cbind(matrix(df[,1]), matrix(df[,3]))
 Y = df[,5]
-K <- X %*% t(X) #linear kernel: Note model can be applied with gaussian or polynomial kernel
+K = X %*% t(X) #linear kernel: Note model can be applied with gaussian or polynomial kernel
 
 SMOSVM = function(X,Y,K){
-  alphas <- rep(0, NROW(X))
+  alphas = rep(0, NROW(X))
   C = 0.05 #By changing C will effect placement of hyperplane
   b = 0
   eps = 10^(-5)
@@ -31,7 +31,7 @@ SMOSVM = function(X,Y,K){
         j = sample(nrow(X),1)
         ans = T
         while (ans == T) {
-          j <- sample(nrow(X),1)
+          j = sample(nrow(X),1)
           if (j != i){
             ans = F
           }
@@ -71,7 +71,7 @@ SMOSVM = function(X,Y,K){
         ########
         
         #Computing new alpha
-        alphas[j] <- alphas[j] - y2 * (E1 - E2)/eta
+        alphas[j] = alphas[j] - y2 * (E1 - E2)/eta
         #Clipping
         alphas[j] = min(H, alphas[j])
         alphas[j] = max(L, alphas[j])
@@ -85,8 +85,8 @@ SMOSVM = function(X,Y,K){
         #Bias#
         ######
         
-        b1 = b - E1-y1*(alphas[i] - alpha1)*kij-y2*(alphas[j]-alpha2)*kij
-        b2 = b - E2-y1*(alphas[i] - alpha1)*kij-y2*(alphas[j]-alpha2)*kij
+        b1 = b - E1-y1*(alphas[i]-alpha1)*kij-y2*(alphas[j]-alpha2)*kij
+        b2 = b - E2-y1*(alphas[i]-alpha1)*kij-y2*(alphas[j]-alpha2)*kij
         if ( alphas[i] > 0 && alphas[i] < C) {
           b = b1
         }else if (alphas[j] > 0 && alphas[j] < C) {
