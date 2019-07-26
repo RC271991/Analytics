@@ -20,16 +20,13 @@ SMOSVM = function(X,Y,K){
   eps = 10^(-5)
   maxiter = 1000
   count = 0
-
+  
   while (count < maxiter) {
     changed_alphas <- 0
-    
     for (i in 1:NROW(X)){
       y1 = Y[i]
       E1 <- b + sum(alphas*Y*K[,i]) - y1
-      
       if((y1*E1 < -eps & alphas[i] < C) || (y1 >  eps & alphas[i] > 0)) {
-        
         #i!=j according to algorithm 
         j = sample(nrow(X),1)
         ans = T
@@ -39,15 +36,13 @@ SMOSVM = function(X,Y,K){
             ans = F
           }
         }
-        
         y2 = Y[j]
         E2 = b + sum(alphas * Y * K[,j]) - y2
         s = y1*y2
         
-        #computing L and H
+        #Computing L and H
         alpha1 = alphas[i]
         alpha2 = alphas[j]
-        
         if (y1 != y2) {
           L = max(0, alphas[j]-alphas[i])
           H = min(C, C + alphas[j]-alphas[i])
@@ -55,7 +50,6 @@ SMOSVM = function(X,Y,K){
           L = max(0, alphas[j]+alphas[i]-C)
           H = min(C, alphas[j]+alphas[i])
         }
-        
         if (L == H) {
           next
         }
@@ -81,12 +75,10 @@ SMOSVM = function(X,Y,K){
         #Clipping
         alphas[j] = min(H, alphas[j])
         alphas[j] = max(L, alphas[j])
-        
         if (abs(alphas[j]-alpha2) < eps){
           alphas[j] = alpha2
           next
         }
-        
         alphas[i] = alphas[i]+s*(alpha2-alphas[j])
         
         ######
@@ -95,7 +87,6 @@ SMOSVM = function(X,Y,K){
         
         b1 = b - E1-y1*(alphas[i] - alpha1)*kij-y2*(alphas[j]-alpha2)*kij
         b2 = b - E2-y1*(alphas[i] - alpha1)*kij-y2*(alphas[j]-alpha2)*kij
-        
         if ( alphas[i] > 0 && alphas[i] < C) {
           b = b1
         }else if (alphas[j] > 0 && alphas[j] < C) {
@@ -106,14 +97,12 @@ SMOSVM = function(X,Y,K){
         changed_alphas = changed_alphas + 1
       }
     }
-    
     if (changed_alphas == 0) {
       count = count + 1
     }else {
       count =  0
     }
   }
-  
   #solving for w and returning w an b
   index = which(alphas > 0)
   X1 = X[index,]
@@ -144,9 +133,9 @@ Y1 = slope*x+intercept
 
 #Plotting data and wTx+b respect to SMO algorithm:
 plot_ly() %>%
-  add_trace(x = X[1:50,1], y = X[1:50,2], type = 'scatter', mode = 'markers',name = '-1') %>%
-  add_trace(x = X[51:100,1], y = X[51:100,2], type = 'scatter', mode = 'markers',name = '1') %>%
+  add_trace(x = X[1:50,1], y = X[1:50,2], type = 'scatter', mode = 'markers',name = 'Class: -1') %>%
+  add_trace(x = X[51:100,1], y = X[51:100,2], type = 'scatter', mode = 'markers',name = 'Class: 1') %>%
   add_trace(x = x, y = Y1, type = 'scatter', mode = 'markers + Line', name = 'wTx+b') %>%
-  layout(title = 'Iris Data -- SMO-SVM',
+  layout(title = '<b>Iris Data -- SMO-SVM</b>',
          xaxis = list(title = 'Sepal.Length'),
          yaxis = list(title = 'Petal.Length'))
