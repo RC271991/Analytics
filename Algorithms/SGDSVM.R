@@ -59,11 +59,11 @@ for (i in 1:10){
 x = unlist(x)
 Y1 = slope*x+intercept
 
-#Plotting data and wTx+b respect to SGD algorithm:
+#Plotting data and wTx+b respect to SMO algorithm:
 plot_ly() %>%
-  add_trace(x = X[1:50,1], y = X[1:50,2], type = 'scatter', mode = 'markers',name = '-1') %>%
-  add_trace(x = X[51:100,1], y = X[51:100,2], type = 'scatter', mode = 'markers',name = '1') %>%
+  add_trace(x = X[1:50,1], y = X[1:50,2], type = 'scatter', mode = 'markers',name = 'Class: -1') %>%
+  add_trace(x = X[51:100,1], y = X[51:100,2], type = 'scatter', mode = 'markers',name = 'Class: 1') %>%
   add_trace(x = x, y = Y1, type = 'scatter', mode = 'markers + Line', name = 'wTx+b') %>%
-  layout(title = 'Iris Data -- SGD-SVM',
+  layout(title = '<b>Iris Data -- SMO-SVM</b>',
          xaxis = list(title = 'Sepal.Length'),
          yaxis = list(title = 'Petal.Length'))
