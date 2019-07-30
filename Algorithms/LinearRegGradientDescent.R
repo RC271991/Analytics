@@ -18,3 +18,14 @@ gradientDescent = function(x,y) {
   return(pred_y)
 
 }
+
+values = gradientDescent(x,y) #Calling Function to get line
+
+#Placing values into a matrix and sorting it to plot line
+values = cbind(matrix(x),matrix(values)) 
+values = values[order(values[,1]),]
+
+plot_ly() %>%
+  add_trace(x = values[,1],y = values[,2],type = 'scatter', mode = 'lines',name = 'Fitted Line') %>%
+  add_trace(x = x,y = y, type = 'scatter', mode = 'markers', name = 'Data') %>%
+  layout(title = '<b>Linear Regression: Gradient Descent</b>')

@@ -21,3 +21,14 @@ localizedWeightedRegression = function(x,y){
   return(ans)
 
 }
+values = localizedWeightedRegression(x,y) #Calling Function to get curve
+
+#Placing values into a matrix and sorting it to plot curve
+values = cbind(matrix(x),matrix(values)) 
+values = values[order(values[,1]),]
+
+plot_ly() %>%
+  add_trace(x = values[,1],y = values[,2],type = 'scatter', mode = 'lines',name = 'Fitted Curve') %>%
+  add_trace(x = x,y = y, type = 'scatter', mode = 'markers', name = 'Data') %>%
+  layout(title = '<b>Localized Weighted Regression</b>')
+
