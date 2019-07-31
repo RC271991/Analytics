@@ -10,7 +10,7 @@ df$Species[df$Species == 1] = 0
 df$Species[df$Species == 3] = 1
 
 #Assigning X matrix and labels
-X = cbind(matrix(df[,1]), matrix(df[,2]))
+X = cbind(matrix(df[,1]), matrix(df[,3]))
 y = df[,5]
 
 GaussianGenerativeAnalysis = function(X,y) {
