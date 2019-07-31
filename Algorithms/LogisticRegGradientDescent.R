@@ -1,4 +1,5 @@
 set.seed(1234)
+library(plotly)
 
 x1 <- rnorm(100, 1, 2)
 x2 <- rnorm(100)

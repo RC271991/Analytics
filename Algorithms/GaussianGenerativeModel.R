@@ -10,7 +10,7 @@ df$Species[df$Species == 1] = 0
 df$Species[df$Species == 3] = 1
 
 #Assigning X matrix and labels
-X = cbind(matrix(df[,1]), matrix(df[,3]))
+X = cbind(matrix(df[,1]), matrix(df[,2]))
 y = df[,5]
 
 GaussianGenerativeAnalysis = function(X,y) {
@@ -88,3 +88,22 @@ GaussianGenerativeAnalysis = function(X,y) {
   pred = unlist(pred)
   return(pred)
 }
+
+##
+vec = matrix.inverse(sigma)%*%(u0 - u1)
+X =cbind(X,y) 
+class0 = X[which(y == 0),]
+class1 = X[which(y == 1),]
+m = -vec[2,]/vec[1,]
+
+b = vec[2,] - m*vec[1,]
+
+Y = m*1:10+b
+plot_ly() %>%
+  add_trace(x = 1:10, y = Y, type = 'scatter', mode = 'lines', name = 'wTx+b')%>%
+  add_trace(x = class0[,1],y = class0[,2], type = 'scatter', mode = 'markers',name = 'Class: -1') %>%
+  add_trace(x = class1[,1],y = class1[,2], type = 'scatter', mode = 'markers',name = 'Class: 1')%>%
+  layout(title = '<b>Iris Data --Gaussian</b>',
+          xaxis = list(title = 'Sepal.Length'),
+          yaxis = list(title = 'Sepal.Width'))
+
