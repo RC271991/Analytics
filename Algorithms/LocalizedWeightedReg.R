@@ -1,3 +1,5 @@
+library(plotly)
+
 x <- runif(100, -5, 5)
 y <- x + rnorm(100) + 3
 

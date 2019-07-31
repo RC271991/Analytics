@@ -105,10 +105,9 @@ SMOSVM = function(X,Y,K){
     }
   }
   #solving for w and returning w an b
-  index = which(alphas > 0)
-  X1 = X[index,]
-  Y1 = Y[index]
-  alphas1 = alphas[index]
+  X1 = X[which(alphas > 0),]
+  Y1 = Y[which(alphas > 0)]
+  alphas1 = alphas[which(alphas > 0)]
   w = t(alphas1 * Y1) %*% X1
 
   return(list("w" = w, "b" = b))
