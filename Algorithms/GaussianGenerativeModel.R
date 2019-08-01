@@ -43,7 +43,7 @@ GaussianGenerativeAnalysis = function(X,y) {
   X_new = X
   for (i in 1:NCOL(X_new)){
     #Subtracting u0 &u1 from each class per independent variable
-    X_new[c(which(y == 0)),i]  = X_new[c(which(y == 0)),1] - u0[i,1]
+    X_new[c(which(y == 0)),i]  = X_new[c(which(y == 0)),i] - u0[i,1]
     X_new[c(which(y == 1)),i]  = X_new[c(which(y == 1)),i] - u1[i,1]
     for (j in 1:NCOL(X_new)){
       m = NCOL(X_new)
