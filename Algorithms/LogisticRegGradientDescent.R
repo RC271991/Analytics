@@ -30,7 +30,7 @@ values = LogisticRegGradientDescent(X,y, 0.1)
 
 #Reference: Understanding Decision boundaries for logistic Regression https://statinfer.com/203-5-2-decision-boundary-logistic-regression/
 
-#If p(y) > 0.5 then class = 1: Y = mx+b ==> X2 = (-b0/b1)*X1 + -b0/b2
+#If p(y) > 0.5 then class = 1: Y = mx+b ==> X2 = (-b1/b2)*X1 + -b0/b2
 intercept = -values$Coefficients[1]/values$Coefficients[3] 
 slope = -values$Coefficients[2]/values$Coefficients[3]
 
