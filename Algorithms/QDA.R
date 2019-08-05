@@ -63,7 +63,7 @@ QDA_pred = function(u,Sigma,phi,x){
     label[[count]] = which(val_hold==max(val_hold)) #Taking argmax and assigning class per data point
     count = count + 1
   }
-  return(cbind(z,label)) #combining data set with labels from previous for loop
+  return(cbind(x,label)) #combining data set with labels from previous for loop
 }
 
 #Setting grid for plot
