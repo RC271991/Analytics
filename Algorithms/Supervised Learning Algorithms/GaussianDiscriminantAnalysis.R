@@ -18,8 +18,10 @@ GaussianGenerativeAnalysis = function(X,y) {
   #######
   ##Phi##
   #######
-
-  phi = length(y[y==1])/length(y)
+  
+  phi = list()
+  phi[[1]] = length(y[y==0])/length(y)
+  phi[[2]] = length(y[y==1])/length(y)
   
   #############
   ##U0 and #U1#
@@ -69,8 +71,8 @@ GaussianGenerativeAnalysis = function(X,y) {
   Pxy0Py = list()
   Pxy1Py = list()
   for (i in 1:NROW(x)){
-    Pxy0Py[[i]] = phi*(1/((2*pi)^(length(u0)/2)*sqrt(det(sigma)))*exp( -1/2 * t(matrix((x[i,] - u0))) %*% matrix.inverse(sigma) %*% matrix(x[i,] - u0) ))
-    Pxy1Py[[i]] = phi*(1/((2*pi)^(length(u1)/2)*sqrt(det(sigma)))*exp( -1/2 * t(matrix((x[i,] - u1))) %*% matrix.inverse(sigma) %*% matrix(x[i,] - u1) ))
+    Pxy0Py[[i]] = phi[[1]]*(1/((2*pi)^(length(u0)/2)*sqrt(det(sigma)))*exp( -1/2 * t(matrix((x[i,] - u0))) %*% matrix.inverse(sigma) %*% matrix(x[i,] - u0) ))
+    Pxy1Py[[i]] = phi[[2]]*(1/((2*pi)^(length(u1)/2)*sqrt(det(sigma)))*exp( -1/2 * t(matrix((x[i,] - u1))) %*% matrix.inverse(sigma) %*% matrix(x[i,] - u1) ))
   }
   Pxy0Py = unlist(Pxy0Py)
   Pxy1Py = unlist(Pxy1Py)
@@ -85,8 +87,7 @@ GaussianGenerativeAnalysis = function(X,y) {
       pred[[i]] = 0
     }
   }
-  pred = unlist(pred)
-  return(pred)
+  return(list("Prediction" = unlist(pred)))
 }
 GaussianGenerativeAnalysis(X,y)
 

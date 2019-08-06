@@ -85,7 +85,7 @@ class1 = X[which(y == 2),]
 class2 = X[which(y == 3),]
 
 plot_ly() %>%
-  add_trace(x = z[,1],y = z[,2],z = z[,3], type = 'contour', colorscale = 'Portland', showlegend = F)%>%
+  add_trace(x = z[,1],y = z[,2],z = z[,3], type = 'contour', colorscale = 'Portland',name = 'Class Boundary', showlegend = F)%>%
   add_trace(x = class0[,1],y = class0[,2], type = 'scatter', mode = 'markers',name = 'Class: 1', marker = list(color = '55B0EA')) %>%
   add_trace(x = class1[,1],y = class1[,2], type = 'scatter', mode = 'markers',name = 'Class: 2', marker = list(color = '#239B56'))%>%
   add_trace(x = class2[,1],y = class2[,2], type = 'scatter', mode = 'markers',name = 'Class: 3', marker = list(color = '#E6B0AA'))%>%
