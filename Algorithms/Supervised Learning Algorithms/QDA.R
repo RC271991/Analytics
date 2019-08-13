@@ -58,12 +58,12 @@ QDA_pred = function(u,Sigma,phi,x){
   for (i in 1:NROW(x)){ #iterating through each data point
     val_hold = array()
     for (j in 1:NROW(u)){ #iterating per amount of classes (Does not need to be values$u)
-      val_hold[[j]] = -1/2*log(det(Sigma[[j]])) - 1/2*t(x[i,]-u[j,])%*%matrix.inverse(Sigma[[j]])%*%(z[i,]-u[j,]) + log(phi[[j]])
+      val_hold[[j]] = -1/2*log(det(Sigma[[j]])) - 1/2*t(x[i,]-u[j,])%*%matrix.inverse(Sigma[[j]])%*%(x[i,]-u[j,]) + log(phi[[j]])
       }
     label[[count]] = which(val_hold==max(val_hold)) #Taking argmax and assigning class per data point
     count = count + 1
   }
-  return(cbind(x,label)) #combining data set with labels from previous for loop
+  return(cbind(X,label)) #combining data set with labels from previous for loop
 }
 
 #Setting grid for plot
