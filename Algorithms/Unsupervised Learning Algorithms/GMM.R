@@ -104,6 +104,10 @@ GMM = function(X,u,Sigma,phi,w,k,max_iter,tol) {
       log_likehood = log_likehood + log(pxkpk)
     }
     
+    ###############
+    ##Convergence##
+    ###############
+    
     #Caculating if log-likelihood of new - previous is greater than tolerance. If not, break loop and return
     #u, Sigma, phi, and log-likelihood
     
