@@ -70,7 +70,7 @@ KMeans = function(X,u,max_iter,k){
       }
     }
   }
-  return(list("u" = u, "U list" = u_list, "X" = X))
+  return(list("u" = u, "U list" = u_list, "X" = X, "iterations" = iter))
 }
 
 values = KMeans(X,u,1000,k)
