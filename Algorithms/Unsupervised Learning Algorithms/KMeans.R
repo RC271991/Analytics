@@ -106,6 +106,6 @@ p_3 = plot_ly()%>%
   add_trace(x = values$u[3,1], y = values$u[3,2],name = 'Centroid: 3', type = 'scatter', mode = 'markers',marker = list(size = 15, color = '#D35400'))
 
 subplot(p_1,p_2,p_3) %>%
-  layout(title = 'Beginning, Random Initilization, and End: K-Means Algorithm',
+  layout(title = '<b>K-Means: Beginning, Random Initilization, and End</b>',
          legend = list(orientation = 'h', y = -0.2, x = 0))
 

@@ -52,13 +52,13 @@ values = QDA(X,y) #calling function to get phi, u, and Sigma
 #Prediction and Boundaries#
 ###########################
 
-QDA_pred = function(u,Sigma,phi,x){
+QDA_pred = function(u,Sigma,phi,X){
   count = 1
   label = array()
-  for (i in 1:NROW(x)){ #iterating through each data point
+  for (i in 1:NROW(X)){ #iterating through each data point
     val_hold = array()
     for (j in 1:NROW(u)){ #iterating per amount of classes (Does not need to be values$u)
-      val_hold[[j]] = -1/2*log(det(Sigma[[j]])) - 1/2*t(x[i,]-u[j,])%*%matrix.inverse(Sigma[[j]])%*%(x[i,]-u[j,]) + log(phi[[j]])
+      val_hold[[j]] = -1/2*log(det(Sigma[[j]])) - 1/2*t(X[i,]-u[j,])%*%matrix.inverse(Sigma[[j]])%*%(X[i,]-u[j,]) + log(phi[[j]])
       }
     label[[count]] = which(val_hold==max(val_hold)) #Taking argmax and assigning class per data point
     count = count + 1

@@ -124,9 +124,9 @@ slope = -values$w[1]/values$w[2]
 ##Prediction##
 ##############
 
-vals = c(5,6,6,4,
-         2,3,4,2)
-NewData = matrix(vals,nrow = 4, ncol = 2)
+vals = c(5,6,6,4,5,7,
+         2,3,4,2,2.7,4.4)
+NewData = matrix(vals,nrow = 6, ncol = 2)
 
 SMO_pred = function(NewData, alg){
   pred = list()
@@ -156,15 +156,15 @@ class1 = X[which(Y == 1),]
 #Plotting data and wTx+b respect to SMO algorithm:
 p1 = plot_ly() %>%
   add_trace(x = X[,1], y = Y1, type = 'scatter', showlegend = F, mode = 'lines', name = 'wTx+b', line = list(color = '#1F618D'))%>%
-  add_trace(x = class0[,1],y = class0[,2], showlegend = F, type = 'scatter', mode = 'markers',name = 'Class: -1', marker = list(color = '#85C1E9')) %>%
-  add_trace(x = class1[,1],y = class1[,2], showlegend = F, type = 'scatter', mode = 'markers',name = 'Class: 1', marker = list(color = '#2ECC71'))
+  add_trace(x = class0[,1],y = class0[,2], showlegend = F, type = 'scatter', mode = 'markers',name = 'Class: -1', marker = list(color ='#FFFFFF', line = list(color = '#2ECC71', width = 1))) %>%
+  add_trace(x = class1[,1],y = class1[,2], showlegend = F, type = 'scatter', mode = 'markers',name = 'Class: 1', marker = list(color = '#FFFFFF', line = list(color = '#5499C7', width = 1)))
 
 p2 =  plot_ly() %>%
   add_trace(x = X[,1], y = Y1, type = 'scatter', mode = 'lines', name = 'wTx+b', line = list(color = '#1F618D'))%>%
-  add_trace(x = class0[,1],y = class0[,2], type = 'scatter', mode = 'markers',name = 'Class: -1', marker = list(color = '#85C1E9')) %>%
-  add_trace(x = class1[,1],y = class1[,2], type = 'scatter', mode = 'markers',name = 'Class: 1', marker = list(color = '#2ECC71')) %>%
-  add_trace(x = NewData1[,1], y = NewData1[,2], type = 'scatter', mode = 'markers', name = 'Predicted: -1', marker = list(color ='#2471A3', size = 10)) %>%
-  add_trace(x = NewData2[,1], y = NewData2[,2], type = 'scatter', mode = 'markers', name = 'Predicted: 1', marker = list(color = '#145A32', size = 10))
+  add_trace(x = class0[,1],y = class0[,2], type = 'scatter', mode = 'markers',name = 'Class: -1', marker = list(color ='#FFFFFF', line = list(color = '#2ECC71', width = 1))) %>%
+  add_trace(x = class1[,1],y = class1[,2], type = 'scatter', mode = 'markers',name = 'Class: 1', marker = list(color = '#FFFFFF', line = list(color = '#5499C7', width = 1))) %>%
+  add_trace(x = NewData1[,1], y = NewData1[,2], type = 'scatter', mode = 'markers', name = 'Predicted: -1', marker = list(color ='#27AE60')) %>%
+  add_trace(x = NewData2[,1], y = NewData2[,2], type = 'scatter', mode = 'markers', name = 'Predicted: 1', marker = list(color = '#1A5276'))
 
 subplot(p1,p2) %>%
   layout(title = '<b>Iris Data -- SMO-SVM:</b> Sepal.Length vs. Sepal.Width',
