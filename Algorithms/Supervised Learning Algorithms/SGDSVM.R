@@ -20,8 +20,8 @@ SGDSVM = function(X,y) {
   w = matrix(rep(0,ncol(X)))
   b = 0
   alpha = 0.01#learning rate: Note can adjust learning rate respectively to change hyperplane
-  iter = 10000
-
+  iter = 1000
+  
   for (i in 1:iter){
     #shuffling
     X = cbind(X,y)
@@ -35,16 +35,43 @@ SGDSVM = function(X,y) {
         #J(W) = sum from i to m of (1/2*||w||^2*epoch +  of the max of (0,1-yiwTxi))
         w = w - alpha*((epochs*w) - (X[j,] * y[j]) ) #w_old - (derative respect to line 32)
         b = b + alpha*y[j]
-        }
+      }
       else{
         w = w - alpha*(epochs*w)
       }
     }
+    
   }
   return(list("w" = w, "b" = b))
 }
 
 values = SGDSVM(X,y)
+
+##############
+##Prediction##
+##############
+
+vals = c(5,6,6,4,
+         2,3,4,2)
+NewData = matrix(vals,nrow = 4, ncol = 2)
+
+SGD_pred = function(NewData, alg){
+  pred = list()
+  for (i in 1:NROW(NewData)){
+    pred[[i]] = t(alg$w)%*%NewData[i,] + alg$b
+    if (pred[[i]] < 0) {
+      pred[[i]] = -1
+    }else{
+      pred[[i]] = 1
+    }
+  }
+  return(cbind(NewData, unlist(pred)))
+}
+
+NewData = SGD_pred(NewData, values) #calling SGD_pred function. Note: This is used for the test set data. Usually, 80/20 split
+
+NewData1 = NewData[NewData[,3] == -1,]
+NewData2 = NewData[NewData[,3] == 1,]
 
 intercept = -values$b/values$w[2] 
 slope = -values$w[1]/values$w[2]
@@ -55,12 +82,23 @@ X =cbind(X,y)
 class0 = X[which(y == -1),]
 class1 = X[which(y == 1),]
 
-plot_ly() %>%
-  add_trace(x = X[,1], y = Y1, type = 'scatter', mode = 'lines', name = 'wTx+b')%>%
-  add_trace(x = class0[,1],y = class0[,2], type = 'scatter', mode = 'markers',name = 'Class: -1') %>%
-  add_trace(x = class1[,1],y = class1[,2], type = 'scatter', mode = 'markers',name = 'Class: 1')%>%
-  layout(title = '<b>Iris Data -- SGD-SVM</b>',
-         xaxis = list(title = 'Sepal.Length'),
-         yaxis = list(title = 'Sepal.Width'))
+############
+##Plotting##
+############
 
+p1 = plot_ly() %>%
+  add_trace(x = X[,1], y = Y1, type = 'scatter', showlegend = F, mode = 'lines', name = 'wTx+b', line = list(color = '#1F618D'))%>%
+  add_trace(x = class0[,1],y = class0[,2], showlegend = F, type = 'scatter', mode = 'markers',name = 'Class: -1', marker = list(color = '#F8C471')) %>%
+  add_trace(x = class1[,1],y = class1[,2], showlegend = F, type = 'scatter', mode = 'markers',name = 'Class: 1', marker = list(color = '#229954'))
+
+p2 =  plot_ly() %>%
+  add_trace(x = X[,1], y = Y1, type = 'scatter', mode = 'lines', name = 'wTx+b', line = list(color = '#1F618D'))%>%
+  add_trace(x = class0[,1],y = class0[,2], type = 'scatter', mode = 'markers',name = 'Class: -1', marker = list(color = '#F8C471')) %>%
+  add_trace(x = class1[,1],y = class1[,2], type = 'scatter', mode = 'markers',name = 'Class: 1', marker = list(color = '#229954')) %>%
+  add_trace(x = NewData1[,1], y = NewData1[,2], type = 'scatter', mode = 'markers', name = 'Predicted: -1', marker = list(color ='#D4AC0D', size = 10)) %>%
+  add_trace(x = NewData2[,1], y = NewData2[,2], type = 'scatter', mode = 'markers', name = 'Predicted: 1', marker = list(color = '#58D68D', size = 10))
+
+subplot(p1,p2) %>%
+  layout(title = '<b>Iris Data -- SGD-SVM:</b> Sepal.Length vs. Sepal.Width',
+         legend = list(orientation = 'h', y = -0.1, x = 0))
 

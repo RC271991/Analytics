@@ -120,6 +120,32 @@ values = SMOSVM(X,Y,K)
 intercept = -values$b/values$w[2] 
 slope = -values$w[1]/values$w[2]
 
+##############
+##Prediction##
+##############
+
+vals = c(5,6,6,4,
+         2,3,4,2)
+NewData = matrix(vals,nrow = 4, ncol = 2)
+
+SMO_pred = function(NewData, alg){
+  pred = list()
+  for (i in 1:NROW(NewData)){
+    pred[[i]] = values$w%*%NewData[i,] + values$b
+    if (pred[[i]] < 0) {
+      pred[[i]] = -1
+    }else{
+      pred[[i]] = 1
+    }
+  }
+  return(cbind(NewData, unlist(pred)))
+}
+
+NewData = SMO_pred(NewData, values) #calling SMO_pred function. Note: This is used for the test set data. Usually, 80/20 split
+
+NewData1 = NewData[NewData[,3] == -1,]
+NewData2 = NewData[NewData[,3] == 1,]
+
 #y =mx+b
 Y1 = slope*X[,1]+intercept
 
@@ -128,10 +154,18 @@ class0 = X[which(Y == -1),]
 class1 = X[which(Y == 1),]
 
 #Plotting data and wTx+b respect to SMO algorithm:
-plot_ly() %>%
-  add_trace(x = X[,1], y = Y1, type = 'scatter', mode = 'lines', name = 'wTx+b')%>%
-  add_trace(x = class0[,1],y = class0[,2], type = 'scatter', mode = 'markers',name = 'Class: -1', marker = list(color = '55B0EA')) %>%
-  add_trace(x = class1[,1],y = class1[,2], type = 'scatter', mode = 'markers',name = 'Class: 1')%>%
-  layout(title = '<b>Iris Data -- SMO-SVM</b>',
-         xaxis = list(title = 'Sepal.Length'),
-         yaxis = list(title = 'Sepal.Width'))
+p1 = plot_ly() %>%
+  add_trace(x = X[,1], y = Y1, type = 'scatter', showlegend = F, mode = 'lines', name = 'wTx+b', line = list(color = '#1F618D'))%>%
+  add_trace(x = class0[,1],y = class0[,2], showlegend = F, type = 'scatter', mode = 'markers',name = 'Class: -1', marker = list(color = '#85C1E9')) %>%
+  add_trace(x = class1[,1],y = class1[,2], showlegend = F, type = 'scatter', mode = 'markers',name = 'Class: 1', marker = list(color = '#2ECC71'))
+
+p2 =  plot_ly() %>%
+  add_trace(x = X[,1], y = Y1, type = 'scatter', mode = 'lines', name = 'wTx+b', line = list(color = '#1F618D'))%>%
+  add_trace(x = class0[,1],y = class0[,2], type = 'scatter', mode = 'markers',name = 'Class: -1', marker = list(color = '#85C1E9')) %>%
+  add_trace(x = class1[,1],y = class1[,2], type = 'scatter', mode = 'markers',name = 'Class: 1', marker = list(color = '#2ECC71')) %>%
+  add_trace(x = NewData1[,1], y = NewData1[,2], type = 'scatter', mode = 'markers', name = 'Predicted: -1', marker = list(color ='#2471A3', size = 10)) %>%
+  add_trace(x = NewData2[,1], y = NewData2[,2], type = 'scatter', mode = 'markers', name = 'Predicted: 1', marker = list(color = '#145A32', size = 10))
+
+subplot(p1,p2) %>%
+  layout(title = '<b>Iris Data -- SMO-SVM:</b> Sepal.Length vs. Sepal.Width',
+         legend = list(orientation = 'h', y = -0.1, x = 0))
