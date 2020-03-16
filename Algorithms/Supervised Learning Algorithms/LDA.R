@@ -6,6 +6,7 @@ if(length(new.packages)) install.packages(new.packages)
 
 library(matrixcalc)#used for matrix inverse
 library(plotly)
+library(dplyr)
 set.seed(1) #Setting random generator so results are same for each script instance
 
 #Date Clean-Up
