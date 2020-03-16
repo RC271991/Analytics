@@ -1,4 +1,10 @@
 set.seed(1234)
+
+# Installing Packages
+list.of.packages <- c("plotly", "matrixcalc", "dplyr")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(plotly)
 
 x1 <- rnorm(100, 1, 2)
