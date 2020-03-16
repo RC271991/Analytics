@@ -1,6 +1,11 @@
 #For reference: https://www.youtube.com/watch?v=OaIIr29Pj2g 
 ## Quadratic Discriminant Anlaysis
 
+# Installing Packages
+list.of.packages <- c("plotly", "matrixcalc", "dplyr")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(matrixcalc)#used for matrix inverse
 library(plotly)
 
@@ -94,6 +99,3 @@ plot_ly() %>%
          yaxis = list(title = 'Sepal.Width'),
          legend = list(orientation = 'h', y = -0.2, x = 0)) %>%
   hide_colorbar()
-
-  
-
