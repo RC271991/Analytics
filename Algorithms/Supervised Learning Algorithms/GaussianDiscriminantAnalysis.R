@@ -1,5 +1,10 @@
 #For refernce: Variables phi, u0,u1, and Sigma are from http://cs229.stanford.edu/notes/cs229-notes2.pdf
 
+# Installing packages
+list.of.packages <- c("matrixcalc")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(matrixcalc)#used for matrix inverse
 
 #Date Clean-Up
