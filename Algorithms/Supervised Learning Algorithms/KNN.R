@@ -1,3 +1,9 @@
+
+# Installing packages
+list.of.packages <- c("plotly", "matrixcalc", "dplyr", "mvtnorm")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(mvtnorm)
 library(plotly)
 set.seed(88) #setting random numbers so plots can be the same for each ran script
