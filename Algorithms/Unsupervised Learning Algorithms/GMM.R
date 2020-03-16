@@ -1,4 +1,10 @@
 #For reference: http://cs229.stanford.edu/notes-spring2019/cs229-notes7b.pdf
+
+# Installing Packages
+list.of.packages <- c("plotly", "matrixcalc", "dplyr", "mvtnorm")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(mvtnorm)
 library(matrixcalc)
 library(plotly)
