@@ -5,7 +5,7 @@ if(length(new.packages)) install.packages(new.packages)
 
 library(plotly)
 library(dplyr)
-library(mlxbench)
+library(matrixcalc)
 
 x <- runif(100, -5, 5)
 y <- x + rnorm(100) + 3
