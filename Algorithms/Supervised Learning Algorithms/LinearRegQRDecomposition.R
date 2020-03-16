@@ -4,6 +4,9 @@ new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"
 if(length(new.packages)) install.packages(new.packages)
 
 library(plotly)
+library(matrixcalc)
+library(dplyr)
+
 x <- runif(100, -5, 5)
 y <- x + rnorm(100) + 3
 
