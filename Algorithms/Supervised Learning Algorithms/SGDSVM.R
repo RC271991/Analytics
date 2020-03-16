@@ -7,6 +7,8 @@ if(length(new.packages)) install.packages(new.packages)
 
 #Hard-margin
 library(plotly)
+library(dplyr)
+library(matrixcalc)
 
 #Date Clean-Up
 df = iris
@@ -107,4 +109,3 @@ p2 =  plot_ly() %>%
 subplot(p1,p2) %>%
   layout(title = '<b>Iris Data -- SGD-SVM:</b> Sepal.Length vs. Sepal.Width',
          legend = list(orientation = 'h', y = -0.1, x = 0))
-
