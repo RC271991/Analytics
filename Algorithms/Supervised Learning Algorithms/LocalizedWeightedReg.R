@@ -1,4 +1,11 @@
+# Installing packages
+list.of.packages <- c("plotly", "matrixcalc", "dplyr")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(plotly)
+library(dplyr)
+library(mlxbench)
 
 x <- runif(100, -5, 5)
 y <- x + rnorm(100) + 3
