@@ -1,3 +1,10 @@
+# Installing Packages
+list.of.packages <- c("plotly", "matrixcalc", "dplyr", "mvtnorm")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+library(matrixcalc)
+library(dplyr)
 library(mvtnorm)
 library(plotly)
 set.seed(1) #Used for random numbers to be equal for each ran script
