@@ -1,4 +1,10 @@
 #reference: https://pdfs.semanticscholar.org/59ee/e096b49d66f39891eb88a6c84cc89acba12d.pdf
+
+# Installing Packages
+list.of.packages <- c("plotly", "matrixcalc", "dplyr")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(plotly)
 
 #Date Clean-Up
