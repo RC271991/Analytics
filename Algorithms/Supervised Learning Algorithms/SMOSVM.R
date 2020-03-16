@@ -6,6 +6,8 @@ new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"
 if(length(new.packages)) install.packages(new.packages)
 
 library(plotly)
+library(dplyr)
+library(matrixcalc)
 
 #Date Clean-Up
 df = iris
