@@ -8,6 +8,7 @@ if(length(new.packages)) install.packages(new.packages)
 library(mvtnorm)
 library(matrixcalc)
 library(plotly)
+library(dplyr)
 set.seed(1234) #Used for random numbers to be equal for each ran script
 
 ##Gaussian Mixtures Model
