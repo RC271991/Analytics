@@ -8,6 +8,7 @@ if(length(new.packages)) install.packages(new.packages)
 
 library(matrixcalc)#used for matrix inverse
 library(plotly)
+library(dplyr)
 
 #Date Clean-Up
 df = iris
