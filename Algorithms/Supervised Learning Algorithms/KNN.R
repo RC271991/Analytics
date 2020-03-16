@@ -6,6 +6,9 @@ if(length(new.packages)) install.packages(new.packages)
 
 library(mvtnorm)
 library(plotly)
+library(matrixcalc)
+library(dplyr)
+
 set.seed(88) #setting random numbers so plots can be the same for each ran script
 #K-Nearest Neighbors - Classification
 
